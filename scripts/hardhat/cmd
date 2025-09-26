@@ -1,0 +1,6 @@
+npx hardhat run scripts/hardhat/operatorNodeOperatorsRegistry.ts --network hoodi
+npx hardhat run scripts/hardhat/operatorStakingRouter.ts --network hoodi
+npx hardhat run scripts/hardhat/operatorHashConsensus.ts --network hoodi
+npx hardhat run scripts/hardhat/operatorValidatorsExitBusOracle.ts --network hoodi
+npx hardhat run scripts/hardhat/operatorExecutionLayerRewardsVault.ts --network hoodi
+npx hardhat run scripts/hardhat/operatorWithdrawalVault.ts --network hoodi

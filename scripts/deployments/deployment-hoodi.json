@@ -1,0 +1,54 @@
+{
+  "GTETH": {
+    "proxy": "0xA7C331F6ad179fc261cf491752b4F91057371f11",
+    "implementation": "0xeb0CF6d7448E4e0426fD81B76e212382D1668ec0"
+  },
+  "WithdrawalQueueERC721": {
+    "proxy": "0x14BeBD6cE44DdB79703e7A17A8A821D8BbBc1485",
+    "implementation": "0x271FbD042Aabaa3A7166ebFBc747bFA823504BD1"
+  },
+  "WithdrawalVault": {
+    "address": "0xC78BA261902Bd6F3a92ba82E29eECf6c6789bcdd",
+    "constructorArguments": [
+      "0xA7C331F6ad179fc261cf491752b4F91057371f11",
+      "0xfAC592E1cd63A9423A2E769764335bb2f59E9B0a"
+    ]
+  },
+  "ExecutionLayerRewardsVault": {
+    "address": "0x6e3d6a941f37EEA19bc00D619f8AA3847491EEE1",
+    "constructorArguments": [
+      "0xA7C331F6ad179fc261cf491752b4F91057371f11",
+      "0xfAC592E1cd63A9423A2E769764335bb2f59E9B0a"
+    ]
+  },
+  "NodeOperatorsRegistry": {
+    "proxy": "0x3d87D29975040e80BC95F014267B347D22a3984C",
+    "implementation": "0x48cE93B661231b0868a6D0B9eadE7415a559872d"
+  },
+  "StakingRouter": {
+    "proxy": "0xBa9798f3E8544E5F4A9c388130178Ba4cB145D07",
+    "implementation": "0xF413dc5824B6e3E8504fF317B13072d930F5Cef6"
+  },
+  "AccountingOracle": {
+    "proxy": "0x61114eabE15b8A5547239C2d5eD7f45e173f4F29",
+    "implementation": "0x1784243641Cf21b0D5b2923f6791926Ac03fF697"
+  },
+  "ValidatorsExitBusOracle": {
+    "proxy": "0xC386AB8c2C64aD75a291836c590D4ff781b598A1",
+    "implementation": "0xB8BA0B611B4B92402Eaa82D35F591AFe2931ad33"
+  },
+  "GTETHLocator": {
+    "address": "0x3e20b6197a154AD4D75dd73E40800E25Ab9424c0",
+    "constructorArguments": {
+      "gteth": "0xA7C331F6ad179fc261cf491752b4F91057371f11",
+      "stakingRouter": "0xBa9798f3E8544E5F4A9c388130178Ba4cB145D07",
+      "nodeOperatorsRegistry": "0x3d87D29975040e80BC95F014267B347D22a3984C",
+      "withdrawalQueueERC721": "0x14BeBD6cE44DdB79703e7A17A8A821D8BbBc1485",
+      "withdrawalVault": "0xC78BA261902Bd6F3a92ba82E29eECf6c6789bcdd",
+      "accountingOracle": "0x61114eabE15b8A5547239C2d5eD7f45e173f4F29",
+      "elRewardsVault": "0x6e3d6a941f37EEA19bc00D619f8AA3847491EEE1",
+      "validatorsExitBusOracle": "0xC386AB8c2C64aD75a291836c590D4ff781b598A1",
+      "treasury": "0xfAC592E1cd63A9423A2E769764335bb2f59E9B0a"
+    }
+  }
+}
