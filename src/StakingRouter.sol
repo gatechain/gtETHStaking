@@ -1179,7 +1179,7 @@ contract StakingRouter is AccessControlUpgradeable, ReentrancyGuardUpgradeable, 
             newAllocations[i] = _currentAllocations[i];
             unchecked { ++i; }
         }
-        
+
         uint256 remainingDeposits = _depositsToAllocate;
         
         // 持续分配直到没有剩余存款或无法再分配
@@ -1202,7 +1202,6 @@ contract StakingRouter is AccessControlUpgradeable, ReentrancyGuardUpgradeable, 
             
             // 如果没有可分配的模块，跳出循环
             if (candidatesCount == 0) break;
-            
             // 找到下一个分配水平
             uint256 nextLevel = type(uint256).max;
             for (uint256 i; i < modulesCount; ) {
@@ -1215,8 +1214,6 @@ contract StakingRouter is AccessControlUpgradeable, ReentrancyGuardUpgradeable, 
             // 计算需要多少存款来让最少的模块达到下一个水平
             uint256 levelGap = nextLevel == type(uint256).max ? 1 : nextLevel - minAllocation;
             uint256 neededDeposits = levelGap * candidatesCount;
-            
-            // 如果需要的存款超过剩余存款，平均分配剩余存款
             if (neededDeposits > remainingDeposits) {
                 uint256 depositsPerCandidate = remainingDeposits / candidatesCount;
                 uint256 extraDeposits = remainingDeposits % candidatesCount;
@@ -1226,12 +1223,15 @@ contract StakingRouter is AccessControlUpgradeable, ReentrancyGuardUpgradeable, 
                         uint256 toAllocate = depositsPerCandidate;
                         if (extraDeposits > 0) {
                             toAllocate++;
-                            extraDeposits--;
                         }
                         
                         // 确保不超过容量限制
                         uint256 maxToAllocate = _capacities[i] - newAllocations[i];
                         toAllocate = _min(toAllocate, maxToAllocate);
+
+                        if (toAllocate > depositsPerCandidate) {
+                            extraDeposits--;
+                        }
                         
                         newAllocations[i] += toAllocate;
                         newAllocated += toAllocate;

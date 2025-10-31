@@ -28,9 +28,7 @@ abstract contract BaseOracle is AccessControlUpgradeable, PausableUpgradeable, U
     
     event FrameConfigSet(uint256 newInitialEpoch, uint256 newEpochsPerFrame);
     event OracleMemberSet(address indexed addr, address indexed prevAddr);
-    event ConsensusVersionSet(uint256 indexed version, uint256 indexed prevVersion);
     event ReportSubmitted(uint256 indexed refSlot, bytes32 hash, uint256 processingDeadlineTime);
-    event ReportDiscarded(uint256 indexed refSlot, bytes32 hash);
     event ProcessingStarted(uint256 indexed refSlot, bytes32 hash);
     event WarnProcessingMissed(uint256 indexed refSlot);
 

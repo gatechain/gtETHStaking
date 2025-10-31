@@ -943,10 +943,10 @@ contract NodeOperatorsRegistry is AccessControlUpgradeable, UUPSUpgradeable {
 
         Packed64x4 memory signingKeysStats = _loadOperatorSigningKeysStats(_nodeOperatorId);  // 加载运营商签名密钥统计
         uint256 totalSigningKeysCount = _get(signingKeysStats, TOTAL_KEYS_COUNT_OFFSET);      // 获取当前总密钥数量
-
+        
         // 验证添加新密钥后不会超过uint64最大值
         _requireValidRange(totalSigningKeysCount + _keysCount <= UINT64_MAX);
-
+        
         // 保存新的密钥和签名数据，返回更新后的总密钥数量
         totalSigningKeysCount = _saveKeysSigs(_nodeOperatorId, totalSigningKeysCount, _keysCount, _publicKeys, _signatures);
 

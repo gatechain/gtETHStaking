@@ -147,6 +147,10 @@ contract WithdrawalQueueERC721 is ERC721EnumerableUpgradeable, AccessControlUpgr
         WithdrawalRequest memory previousRequest = withdrawalRequests[previousRequestId];
         uint256 ethAmount = request.cumulativeETHAmount - previousRequest.cumulativeETHAmount;
         
+        request.isClaimed = true;
+        request.recipient = _recipient;
+        request.claimedAt = block.timestamp;
+        
         if (ethAmount > 0) {
             // Transfer ETH to the user if the amount is greater than 0
             // avoid transfer zero amount
@@ -155,10 +159,6 @@ contract WithdrawalQueueERC721 is ERC721EnumerableUpgradeable, AccessControlUpgr
                 revert Error.TransferFailed();
             }
         }
-        
-        request.isClaimed = true;
-        request.recipient = _recipient;
-        request.claimedAt = block.timestamp;
         emit WithdrawalClaimed(_recipient, _requestId, ethAmount);
     }
     
